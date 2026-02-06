@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jambi Heritage - The Golden Era</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <header class="header-glory">
+        <div class="logo">
+            <i class="fas fa-landmark logo-icon"></i> 
+            <span class="logo-text">JAMBI</span>
+            <span class="logo-subtext">HERITAGE</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+                <li><a href="#filosofi" class="nav-link">Adat & Filosofi</a></li>
+                <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                <li><a href="#arkeologi" class="nav-link">Ekspedisi</a></li>
+                <li><a href="#seni" class="nav-link">Seni</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <section class="hero cinematic-hero" id="home">
+        <div class="hero-content reveal">
+            <div class="hero-badge">Warisan Melayu Kuno</div>
+            <h1 class="hero-title">Keagungan <span class="glory-text">Bumi Sepucuk Jambi</span></h1>
+            <p class="hero-subtitle">Menyingkap tabir sejarah dari Naskah Incung, Hukum Adat, hingga Arkeologi Bawah Air Sungai Batanghari.</p>
+            <button class="btn-primary btn-glory" onclick="scrollToSection('filosofi')">
+                <span>Mulai Ekspedisi</span> <i class="fas fa-compass"></i>
+            </button>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section id="filosofi" class="content-section reveal">
+            <h2 class="section-title title-glory">Filosofi & <span>Seloko</span></h2>
+            
+            <div class="seloko-container">
+                <div class="seloko-slide active">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="seloko-text">"Adat bersendi syarak, syarak bersendi Kitabullah."</p>
+                    <p class="seloko-meaning">Segala adat istiadat Jambi didasarkan pada hukum agama Islam dan Al-Qur'an.</p>
+                </div>
+                <div class="seloko-slide">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="seloko-text">"Gedang dak boleh melanda, panjang dak boleh melindas."</p>
+                    <p class="seloko-meaning">Pemimpin tidak boleh sewenang-wenang menindas rakyat kecil.</p>
+                </div>
+                <div class="seloko-slide">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="seloko-text">"Alam sekato Rajo, Negeri sekato Batin."</p>
+                    <p class="seloko-meaning">Kesepakatan antara pemimpin dan rakyat dalam membangun negeri.</p>
+                </div>
+                <div class="slider-controls">
+                    <button onclick="prevSeloko()"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="nextSeloko()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="customs-grid">
+                <div class="custom-card wedding-card">
+                    <h3><i class="fas fa-rings-wedding"></i> Daur Hidup: Pernikahan</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-num">01</span>
+                            <div class="step-info">
+                                <h4>Mengantar Belanja</h4>
+                                <p>Pihak laki-laki menyerahkan kebutuhan dapur & uang adat.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">02</span>
+                            <div class="step-info">
+                                <h4>Akad & Bersanding</h4>
+                                <p>Mempelai mengenakan Baju Kurung Tanggung & Lacak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-card law-card">
+                    <h3><i class="fas fa-balance-scale"></i> Hukum Adat</h3>
+                    <div class="law-content">
+                        <h4>Cuci Kampung</h4>
+                        <p>Ritual pembersihan desa dari bala bencana akibat pelanggaran adat (seperti perzinahan) yang dilakukan warganya. Melibatkan penyembelihan hewan (kambing/kerbau) dan doa tolak bala.</p>
+                        <div class="divider"></div>
+                        <h4>Sistem Kekerabatan</h4>
+                        <p>Matrilineal (di sebagian Kerinci) & Parental (umumnya Melayu Jambi), mengutamakan musyawarah mufakat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="galeri" class="content-section reveal">
+            <h2 class="section-title title-glory"><span>Khazanah</span> Budaya</h2>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterGallery('all')">Semua</button>
+                <button class="filter-btn" onclick="filterGallery('arsitektur')">Arsitektur & Transportasi</button>
+                <button class="filter-btn" onclick="filterGallery('kriya')">Kriya & Tekstil</button>
+                <button class="filter-btn" onclick="filterGallery('kuliner')">Kuliner</button>
+                <button class="filter-btn" onclick="filterGallery('naskah')">Naskah</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item arsitektur">
+                    <div class="gallery-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0e/Kajang_Leko_Rumah_adat_Jambi.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Rumah Kajang Lako</h3>
+                        <p>Rumah panggung dengan atap melengkung seperti perahu ("Kajang Lako").</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item arsitektur">
+                    <div class="gallery-img" style="background-image: url('https://i.pinimg.com/736x/02/06/9c/02069ca5c370b58de7f1f3254dc1d2d4.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Rumah Larik (Kerinci)</h3>
+                        <p>Rumah panjang berderet yang dihuni satu klen keluarga besar.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item arsitektur">
+                    <div class="gallery-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Perahu_Ketek.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Perahu Ketek</h3>
+                        <p>Transportasi air tradisional menyusuri Sungai Batanghari menuju Seberang Kota.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item kriya">
+                    <div class="gallery-img" style="background-image: url('http://aksipost.b-cdn.net/wp-content/uploads/2017/10/022320122928-Copy.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Batik Angso Duo</h3>
+                        <p>Motif ikonik dua angsa yang melambangkan keselarasan hidup.</p>
+                    </div>
+                </div>
+
+                                <div class="gallery-item kriya">
+                    <div class="gallery-img" style="background-image: url('https://www.indonesia.travel/contentassets/55e10f1559694ea88b1ec0acfd3a4abe/motif-durian-pecah.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Batik Durian Pecah</h3>
+                        <p>Melambangkan hati yang terbuka dan jujur. Seperti durian yang pecah, isinya yang manis dan harum dapat dinikmati semua orang.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item kriya">
+                    <div class="gallery-img" style="background-image: url('https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_1024/v1644151703/r8mhycxbqcdvnrygcavc.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Anyaman Pandan & Rotan</h3>
+                        <p>Kerajinan tangan tikar dan bakul khas daerah Tanjung Jabung.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item kuliner">
+                    <div class="gallery-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ae/WikiMaknyus_Jambi_-_Nasi_Minyak_3.jpg');"></div>
+                    <div class="gallery-info">
+                        <h3>Nasi Minyak Jambi</h3>
+                        <p>Sajian nasi rempah istimewa warisan Timur Tengah untuk kenduri adat.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item kuliner">
+                    <div class="gallery-img" style="background-image: url('https://i.ytimg.com/vi/SH03Fog0ZHg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCMW8TPWa59amWL1QZB5tg2ZupLsg');"></div>
+                    <div class="gallery-info">
+                        <h3>Gulai Tepek Ikan</h3>
+                        <p>Olahan ikan gabus khas Jambi dengan kuah santan kental.</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item naskah">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-scroll big-icon"></i>
+                                <h3>Aksara Incung</h3>
+                                <p>Klik untuk membalik</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Warisan Literasi</h3>
+                                <p>Aksara asli Kerinci yang ditulis pada bambu atau kulit kayu/tanduk.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="seni" class="content-section reveal">
+    <h2 class="section-title title-glory">Panggung <span>Persembahan</span></h2>
+    <div class="dance-featured">
+        <div class="dance-image-container">
+            <img src="https://nnc-media.netralnews.com/2025/06/IMG-Netral-News-Admin-20-ANDUHFVKSO.jpg" alt="Tari Sekapur Sirih" class="dance-img">
+            <div class="image-overlay-glow"></div>
+            <div class="overlay-text">Tari Sekapur Sirih</div>
+        </div>
+
+        <div class="dance-details">
+            <h3>Makna & Simbolisme</h3>
+            <p>Tarian wajib untuk menyambut tamu agung. Penari membawa <strong>Tepak Sirih</strong> yang berisi ramuan simbolis:</p>
+            <ul class="sirih-elements">
+                <li><i class="fas fa-check-circle"></i> <strong>Sirih & Kapur:</strong> Simbol ketulusan hati.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Pinang:</strong> Simbol keturunan yang baik.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Gambir:</strong> Simbol keteguhan prinsip.</li>
+            </ul>
+            <p class="dance-note">"Tamu yang mencicipi sirih dianggap telah menjadi bagian dari keluarga besar Jambi."</p>
+        </div>
+    </div>
+</section>
+
+        <section id="sejarah" class="history-section reveal">
+    <div class="container">
+        <h2 class="section-title title-glory">Lorong Waktu <span>Sejarah</span></h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Abad ke-7</div>
+                <div class="timeline-content">
+                    <h3>Kerajaan Melayu Kuno</h3>
+                    <p>Jambi merupakan pusat Kerajaan Melayu yang menjadi titik penting perdagangan jalur sutra dan pusat belajar agama Budha di Asia Tenggara (Situs Muaro Jambi).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Abad ke-15</div>
+                <div class="timeline-content">
+                    <h3>Era Putri Pinang Masak</h3>
+                    <p>Legenda kepemimpinan seorang putri cantik yang menyatukan wilayah Jambi dan awal mula berdirinya Kesultanan Jambi yang bercorak Islam.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Era Kolonial</div>
+                <div class="timeline-content">
+                    <h3>Sultan Thaha Syaifuddin</h3>
+                    <p>Perlawanan gigih pahlawan nasional dari Jambi melawan Belanda hingga titik darah penghabisan di Tanah Garo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="rimba" class="content-section reveal">
+    <h2 class="section-title title-glory">Apotek <span>Rimba</span></h2>
+    <p class="section-desc">Kearifan Suku Anak Dalam (Orang Rimba) dalam meracik obat dari jantung hutan Jambi.</p>
+    
+    <div class="herbal-grid">
+        <div class="herbal-card">
+            <div class="herbal-icon"><i class="fas fa-leaf"></i></div>
+            <h4>Akar Larak</h4>
+            <p>Digunakan sebagai penambah stamina dan obat kuat bagi para pemburu di dalam hutan.</p>
+        </div>
+        <div class="herbal-card">
+            <div class="herbal-icon"><i class="fas fa-seedling"></i></div>
+            <h4>Daun Sidingin</h4>
+            <p>Dihaluskan dan ditempelkan pada dahi untuk menurunkan demam tinggi secara alami.</p>
+        </div>
+        <div class="herbal-card">
+            <div class="herbal-icon"><i class="fas fa-tree"></i></div>
+            <h4>Getah Kayu Damar</h4>
+            <p>Selain untuk penerangan, digunakan sebagai obat luka luar agar cepat mengering dan mencegah infeksi.</p>
+        </div>
+    </div>
+</section>
+
+<div class="customs-grid2">
+    <div class="custom-card kinship-card">
+        <h3><i class="fas fa-users-class"></i> Sistem Kekerabatan</h3>
+        <p>Masyarakat Melayu Jambi menganut sistem <strong>Parental/Bilateral</strong>, di mana garis keturunan ayah dan ibu sama kuatnya.</p>
+        <div class="kinship-roles">
+            <div class="role-box">
+                <strong>Tuo-Tuo Tengganai</strong>
+                <span>Para sesepuh pengambil keputusan adat dalam keluarga besar.</span>
+            </div>
+            <div class="role-box">
+                <strong>Induk Waris</strong>
+                <span>Pemegang amanah harta pusaka keluarga (dominan di wilayah Kerinci).</span>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+
+<div class="pantun-section">
+    <h3 class="sub-title"><i class="fas fa-comments"></i> Tradisi Berbalas Pantun</h3>
+    <p>Pantun bukan sekadar hiburan, tapi media diplomasi adat Jambi dalam acara "Buka Pintu" pernikahan.</p>
+    <div class="pantun-chat-container">
+        <div class="chat-bubble bubble-left">
+            <p>"Kayu jati di atas batu,<br>Batu dibelah menjadi dua.<br>Kami datang ke depan pintu,<br>Membawa niat tulus di jiwa."</p>
+            <span class="chat-name">Pihak Laki-laki</span>
+        </div>
+        <div class="chat-bubble bubble-right">
+            <p>"Anak ikan dimakan ikan,<br>Ikan berenang di air tenang.<br>Niat tulus kami nantikan,<br>Adat dijalankan hati pun senang."</p>
+            <span class="chat-name">Pihak Perempuan</span>
+        </div>
+    </div>
+</div>
+
+<section id="arkeologi" class="content-section reveal">
+    <div class="underwater-theme">
+        <h2 class="section-title title-glory">Ekspedisi <span>Batanghari</span></h2>
+        <div class="radar-layout">
+            <div class="radar-container">
+                <div class="radar-screen">
+                    <div class="radar-sweep"></div>
+                    <div class="radar-dot dot-1" 
+                         data-info="Keramik Dinasti Song (Abad 10)" 
+                         data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Song_Dynasty_Bowl.jpg/640px-Song_Dynasty_Bowl.jpg"></div>
+                    <div class="radar-dot dot-2" 
+                         data-info="Arca Emas Avalokitesvara" 
+                         data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Jambi_Gold_Statue.jpg/640px-Jambi_Gold_Statue.jpg"></div>
+                    <div class="radar-dot dot-3" 
+                         data-info="Sisa Perahu Kuno" 
+                         data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ancient_Ship_Discovery.jpg/640px-Ancient_Ship_Discovery.jpg"></div>
+                </div>
+            </div>
+            
+            <div class="artifact-display" id="artifact-info">
+                <div id="artifact-preview-container">
+                    <img id="artifact-preview-img" src="" alt="Preview">
+                </div>
+                <div class="artifact-text">
+                    <h3 id="artifact-title"><i class="fas fa-search"></i> Sonar Aktif...</h3>
+                    <p id="artifact-desc">Situs Bawah Air Sungai Batanghari menyimpan ribuan keramik asing. Arahkan kursor ke titik hijau di radar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section id="seni" class="content-section reveal">
+            <h2 class="section-title title-glory">Harmoni <span>Melayu</span></h2>
+            <div class="arts-split">
+                <div class="art-column music-column">
+    <h3><i class="fas fa-music"></i> Musik Krinok & Kelintang</h3>
+    <p>Seni vokal tertua yang diiringi musik Kelintang Kayu & Gambus.</p>
+    
+    <div class="music-player-youtube">
+        <div class="youtube-container" id="youtube-player">
+            <iframe id="yt-iframe" width="100%" height="100" 
+                    src="./Batanghari - Lagu Daerah Jambi (Lirik dan Terjemahan).mp3" 
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="player-overlay">
+            <div class="visualizer-mini">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+            <span>Sekarang Memutar: <strong>Batanghari - Jambi</strong></span>
+        </div>
+    </div>
+</div>                <div class="art-column dance-column">
+                    <h3><i class="fas fa-user-friends"></i> Seni Pertunjukan</h3>
+                    <ul class="dance-list">
+                        <li>
+                            <span class="dance-title">Tari Sekapur Sirih</span>
+                            <span class="dance-desc">Tarian penyambutan tamu agung dengan tepak sirih.</span>
+                        </li>
+                        <li>
+                            <span class="dance-title">Tari Selampit Delapan</span>
+                            <span class="dance-desc">Simbol pergaulan muda-mudi yang santun dengan kain panjang.</span>
+                        </li>
+                        <li>
+                            <span class="dance-title">Teater Dulmuluk</span>
+                            <span class="dance-desc">Teater tutur jenaka khas Melayu Jambi.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="content-section reveal">
+            <h2 class="section-title title-glory">Buku <span>Tamu</span></h2>
+            <div class="contact-card-glass">
+                <form class="elegant-form">
+                    <div class="input-group">
+                        <input type="text" required>
+                        <label>Nama Lengkap</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea required rows="3"></textarea>
+                        <label>Pesan Kesan</label>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer-luxury">
+        <p>&copy; 2026 Jambi Heritage. Mempersembahkan Kekayaan Budaya untuk Dunia.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
