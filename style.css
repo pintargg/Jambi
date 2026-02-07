@@ -236,15 +236,121 @@ footer p {
     color: #666;
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE & MOBILE OPTIMIZATION --- */
+
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .mobile-menu-btn { display: block; }
-    .hero h1 { font-size: 2.5rem; }
-    .featured-grid { grid-template-columns: 1fr; }
-    .featured-card { flex-direction: column; }
-    .featured-img { width: 100%; height: 200px; }
-    .featured-content { width: 100%; }
+    /* 1. Navigasi Mobile */
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1001;
+        color: var(--primary-gold);
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Sembunyi di kanan */
+        height: 100vh;
+        width: 70%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 1px solid var(--primary-gold);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0; /* Muncul */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    /* 2. Hero Section Mobile */
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    /* 3. Sejarah Tabs (Fitur Baru) */
+    .era-tabs {
+        flex-direction: column; /* Tombol jadi vertikal */
+        gap: 10px;
+        padding: 0 20px;
+    }
+
+    .era-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+    .era-grid {
+        grid-template-columns: 1fr; /* Jadi 1 kolom */
+        padding: 20px;
+    }
+
+    .era-img img {
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    /* 4. Fitur Lainnya */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* Galeri & Grid Umum */
+    .gallery-grid, 
+    .herbal-grid, 
+    .customs-grid, 
+    .arts-split,
+    .radar-layout {
+        grid-template-columns: 1fr; /* Semua grid jadi 1 kolom */
+        gap: 30px;
+    }
+
+    /* Arkeologi Radar Mobile */
+    .radar-screen {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+    
+    .artifact-display {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Tari Sekapur Sirih */
+    .dance-featured {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .dance-image-container {
+        height: 250px;
+    }
+
+    /* Pantun Chat */
+    .chat-bubble {
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
 }
 
 /* ANIMASI */
@@ -1194,4 +1300,98 @@ body { background-color: var(--dark-bg); color: var(--text-light); font-family: 
     .dance-image-container {
         height: 250px;
     }
+}
+
+
+/* --- TAMBAHAN: ERA HISTORY TABS --- */
+.era-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.era-btn {
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-gold);
+    color: var(--text-light);
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.era-btn i { color: var(--primary-gold); }
+
+.era-btn:hover, .era-btn.active {
+    background: var(--primary-gold);
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.era-btn.active i { color: #000; }
+
+.era-content {
+    display: none; /* Sembunyikan konten secara default */
+    animation: fadeIn 0.8s ease;
+}
+
+.era-content.active-content {
+    display: block; /* Tampilkan jika aktif */
+}
+
+.era-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    background: rgba(20, 20, 20, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.era-text h3 {
+    color: var(--primary-gold);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-red);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.era-list {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.era-list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    border-left: 3px solid var(--primary-gold);
+    color: #ccc;
+}
+
+.era-list strong { color: #fff; }
+
+.era-img img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--primary-gold);
+    box-shadow: 10px 10px 0px rgba(212, 175, 55, 0.1);
+}
+
+@media (max-width: 768px) {
+    .era-grid { grid-template-columns: 1fr; }
+    .era-img img { height: 250px; margin-top: 20px; }
+    .era-btn { width: 100%; justify-content: center; }
 }
