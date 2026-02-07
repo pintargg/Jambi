@@ -255,3 +255,62 @@ herbalCards.forEach(card => {
         card.style.boxShadow = "none";
     });
 });
+
+/* 4. LOGIC TABS SEJARAH (ERA) */
+function openEra(evt, eraName) {
+    // 1. Sembunyikan semua konten era
+    const eraContents = document.getElementsByClassName("era-content");
+    for (let i = 0; i < eraContents.length; i++) {
+        eraContents[i].classList.remove("active-content");
+    }
+
+    // 2. Hapus class 'active' dari semua tombol
+    const eraBtns = document.getElementsByClassName("era-btn");
+    for (let i = 0; i < eraBtns.length; i++) {
+        eraBtns[i].classList.remove("active");
+    }
+
+    // 3. Tampilkan era yang dipilih & aktifkan tombolnya
+    document.getElementById(eraName).classList.add("active-content");
+    evt.currentTarget.classList.add("active");
+}
+
+/* 5. LOGIC MOBILE MENU (HAMBURGER) */
+const mobileBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-link');
+
+// Toggle Menu saat tombol diklik
+mobileBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    
+    // Ubah ikon dari garis tiga ke silang (X)
+    const icon = mobileBtn.querySelector('i');
+    if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+
+// Tutup menu otomatis saat salah satu link diklik
+navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const icon = mobileBtn.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    });
+});
+
+// Tutup menu jika klik di luar area menu
+document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        const icon = mobileBtn.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
